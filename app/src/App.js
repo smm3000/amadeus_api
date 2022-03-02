@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, makeStyles } from "@material-ui/core";
 import { Search } from "./Search";
 import { DateFilters } from "./DateFilters";
+import { Hotels } from "./Hotels";
 import dayjs from "dayjs";
 const useStyles = makeStyles({
   // ...
@@ -20,6 +21,13 @@ const App = () => {
         setCheckInDate={setCheckInDate}
         setCheckOutDate={setCheckOutDate}
       />
+       <div className={classes.results}>
+        <Hotels
+          cityCode={cityCode}
+          checkInDate={checkInDate}
+          checkOutDate={checkOutDate}
+        />
+      </div>
     </Container>
   );
 };

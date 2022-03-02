@@ -23,7 +23,7 @@ const search = (input) => {
                 })
               );
             }
-          });
+          })
         },
         cancel() {
           source.cancel();
@@ -41,4 +41,20 @@ const search = (input) => {
   };
 };
 
-export { search };
+const getHotels = async (cityCode, checkInDate, checkOutDate) => {
+    try {
+      const response = await axios.get(
+        `/api/hotels?cityCode=${cityCode}&checkInDate=${checkInDate}&checkOutDate=${checkOutDate}`
+      );
+      const json = response.data;
+  
+      if (json && json.data) {
+        return json.data.map(({ hotel }) => hotel);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    return [];
+  };
+
+export { search, getHotels };
