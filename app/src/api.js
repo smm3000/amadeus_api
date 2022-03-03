@@ -57,4 +57,18 @@ const getHotels = async (cityCode, checkInDate, checkOutDate) => {
     return [];
   };
 
-export { search, getHotels };
+  const getOffers = async (hotelId) => {
+    try {
+      const response = await axios.get(`/api/offers?hotelId=${hotelId}`);
+      const json = response.data;
+      if (json && json.data) {
+        return json.data.offers;
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    return [];
+  };
+  
+
+export { search, getHotels, getOffers };

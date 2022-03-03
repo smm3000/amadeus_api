@@ -11,6 +11,7 @@ import {
   Apartment as HotelIcon,
   ExpandMore as ExpandIcon,
 } from "@material-ui/icons";
+import { Offers } from "./Offers";
 import { getHotels } from "./api";
 const useStyles = makeStyles((theme) => ({
   // ...
@@ -95,8 +96,14 @@ const Hotels = ({ cityCode, checkInDate, checkOutDate }) => {
                     </Typography>
                   </div>
                 </div>
-              </AccordionSummary>
-              <AccordionDetails>{/* Display offers */}</AccordionDetails>
+                </AccordionSummary>
+              <AccordionDetails>
+                <Offers
+                  active={active}
+                  hotelId={hotelId}
+                  setOfferId={setOfferId}
+                />
+              </AccordionDetails>
             </Accordion>
           );
         })}
